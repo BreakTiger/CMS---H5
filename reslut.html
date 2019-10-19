@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <title>超级搜-搜索结果</title>
+    <link rel="stylesheet" href="css/default.css">
+    <script type="text/javascript" src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <style>
+        .floor-one {
+            padding: 6px 0;
+        }
+
+        .floor-two {
+            padding: 12px 0;
+        }
+
+        .floor-two>span,
+        .floor-two>div {
+            padding: 5px 10px;
+            border-radius: 12px;
+        }
+
+        .choice-one {
+            background: #FDE4E1;
+            color: #FD736D;
+        }
+
+        .floor-three {
+            padding: 0 11px;
+        }
+
+        .condition {
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="floor-one b-ff flex col fl-align">
+
+        </div>
+        <div class="floor-two b-ff flex fl-align fl-jsa">
+            <span class="choice-one">综合</span>
+            <span>最新</span>
+            <span>销量</span>
+            <div>
+                <span>价格</span>
+                <i></i>
+            </div>
+        </div>
+        <div class="floor-three">
+            <div class="condition">
+                <span class="fz-12 c-66">快捷筛选：</span>
+                <span>只看有券</span>
+                <span>只看天猫</span>
+            </div>
+            <div class="list-content">
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

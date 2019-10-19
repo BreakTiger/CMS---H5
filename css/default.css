@@ -1,0 +1,443 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-size: 10px;
+  max-width: 750px;
+  margin: auto;
+  background: #F5F2F2;
+  color: #999999;
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: none;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  border: 0;
+  outline: 0;
+  box-shadow: 0;
+}
+
+
+/* 弹性 */
+.flex {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.col {
+  flex-direction: column;
+  -webkit-flex-direction: column;
+}
+
+.fl-w {
+  flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+
+.fl-align {
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.fl-jc {
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+
+.fl-jsb {
+  justify-content: space-between;
+  -webkit-justify-content: space-between;
+}
+
+.fl-jsa {
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+}
+
+.fl-jse {
+  justify-content: space-evenly;
+  -webkit-justify-content: space-evenly;
+}
+
+
+/* 其他 */
+.d-b {
+  display: block;
+}
+
+.d-ib {
+  display: inline-block;
+}
+
+.hides {
+  display: none !important;
+}
+
+
+/* 背景 */
+.b-ff {
+  background: #fff;
+}
+
+/* 文本 */
+.t-c {
+  text-align: center;
+}
+
+.t-line {
+  text-decoration: line-through;
+}
+
+/* 文字大小 */
+.fz-10 {
+  font-size: 1rem;
+}
+
+.fz-11 {
+  font-size: 1.1rem;
+}
+
+.fz-12 {
+  font-size: 1.2rem;
+}
+
+.fz-13 {
+  font-size: 1.3rem;
+}
+
+.fz-14 {
+  font-size: 1.4rem;
+}
+
+.fz-16 {
+  font-size: 1.6rem;
+}
+
+.fz-18 {
+  font-size: 1.8rem;
+}
+
+.fz-19 {
+  font-size: 1.9rem;
+}
+
+.fz-27 {
+  font-size: 2.7rem;
+}
+
+/* 文字颜色 */
+.c-ff {
+  color: #fff;
+}
+
+.c-6D {
+  color: #FD736D;
+}
+
+.c-65 {
+  color: #6b6565;
+}
+
+.c-5E {
+  color: #FF5E5E
+}
+
+.c-FB {
+  color: #A04EFB;
+}
+
+.c-9F {
+  color: #8C79FF
+}
+
+.c-AA {
+  color: #AAAAAA;
+}
+
+.c-BB {
+  color: #BBBBBB;
+}
+
+.c-58 {
+  color: #FF4B58;
+}
+
+.c-33 {
+  color: #333;
+}
+
+.c-66 {
+  color: #666;
+}
+
+.c-41 {
+  color: #424141;
+}
+
+/* 圆角 */
+.b-r6 {
+  border-radius: 6px;
+}
+
+.b-r1000 {
+  border-radius: 1000px;
+}
+
+/* 间距 内+外 */
+.p-sm {
+  padding: 1rem;
+}
+
+.p-v-xs {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.p-v-sm {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.p-h-xs {
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
+
+.p-h-sm {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.p-top-xs {
+  padding-top: .5rem;
+}
+
+.p-bottom-xs {
+  padding-bottom: .5rem;
+}
+
+.m-sm {
+  margin: 1rem;
+}
+
+.m-xs {
+  margin: .5rem;
+}
+
+.m-v-xs {
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+}
+
+/* 定位 */
+.fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+
+/* 单行 */
+.clamp1 {
+  word-wrap: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* 俩行 */
+.clamp2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+}
+
+
+
+/* 轮播商品 */
+.goods-swiper-default {
+  width: 30%;
+}
+
+.goods-swiper-default img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.goods-swiper-message {
+  position: relative;
+  top: -2rem;
+  border-radius: 5px;
+  width: 94%;
+  box-shadow: 2px 2px 15px 0 rgba(186, 182, 248, 0.3)
+}
+
+.quan {
+  width: 46px;
+  height: 14px;
+  background: url(http://img.fqapps.com/4d986c7edcb169c50aa078fd17e72a27) no-repeat center/46px;
+  position: relative;
+}
+
+.quan>span {
+  position: absolute;
+  top: -.1rem;
+  right: .5rem;
+}
+
+
+/* 底部Tab */
+.Tab-line {
+  width: 100%;
+  max-width: 750px;
+  height: 49px;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+}
+
+.tab-item {
+  width: 20%;
+}
+
+.tab-item>i {
+  width: 22px;
+  height: 20px;
+  margin-bottom: .5rem;
+}
+
+.t-active {
+  color: #F67361;
+}
+
+
+/* 遮罩 */
+.cover {
+  max-width: 750px;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  z-index: 2000;
+}
+
+
+/* 淘宝图标 */
+.t-icon {
+  width: 13px;
+  height: 13px;
+  background: url(http://img.fqapps.com/ff642e093f953864a9099529084afc15) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 1.3rem;
+  left: 0;
+}
+
+/* 天猫图标 */
+.tm-icon {
+  width: 13px;
+  height: 13px;
+  background: url(http://img.fqapps.com/0792cd63a8bc786948393cba76ca4094) no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+/* 浮动内容 */
+.floating {
+  height: 90px;
+  position: fixed;
+  bottom: 5.5rem;
+  right: 1rem;
+  z-index: 1000;
+  right: 1rem;
+}
+
+.floating>i {
+  width: 45px;
+  height: 45px;
+  background-size: 100%;
+}
+
+
+/* 各分辨率下的样式 */
+
+@media (min-width: 1024px) {
+  .floating {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 12rem;
+    z-index: 1000;
+  }
+}
+
+/*>=1024的设备*/
+
+@media (min-width: 1100px) {
+  .floating{
+    position: fixed;
+    bottom: 4.5rem;
+    right: 15rem;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 1280px) {
+  .floating {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 22rem;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 1366px) {
+  .floating {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 26rem;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 1440px) {
+  .floating {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 29rem;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 1680px) {
+  .floating {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 39rem;
+    z-index: 1000;
+  }
+}
+
+@media (min-width: 1920px) {
+  .floating {
+    position: fixed;
+    bottom: 4.5rem;
+    right: 49rem;
+    z-index: 1000;
+  }
+}

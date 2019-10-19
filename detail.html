@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
+    <!-- <link rel="shortcut icon" href="/Public/assets/mobile/images/ico/mobile.ico" type="image/x-icon" /> -->
+    <!-- <link rel="shortcut icon" href="/Public/assets/mobile/images/ico/mobile.ico" type="image/x-icon" /> -->
+    <title>商品详情</title>
+    <link rel="stylesheet" href="css/default.css">
+    <!-- <link rel="stylesheet" href="//at.alicdn.com/t/font_1309730_i3tjx7ofwrp.css"> -->
+    <script type="text/javascript" src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="js/vue.js"></script>
+    <!-- 轮播 -->
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <script src="js/swiper.min.js"></script>
+    
+    <style>
+        .floor-one .swiper-container,
+        .floor-one .swiper-slide>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .floor-two {
+            margin-top: -.4rem;
+        }
+
+        .floor-two,
+        .floor-three,
+        .floor-four,
+        .floor-five {
+            margin-bottom: 1rem;
+        }
+
+        .title-line {
+            margin-top: 1rem;
+            margin-bottom: 1.7rem;
+            position: relative;
+        }
+
+        .title-line>span {
+            width: 100%;
+            text-indent: 1.2rem;
+        }
+
+        .t-icon {
+            top: .2rem;
+            left: .8rem;
+        }
+
+        .price-line {
+            margin-bottom: .7rem;
+        }
+
+        .coupons {
+            background: url(http://img.fqapps.com/e8c5717bde8c634e08888ce36df106f2) no-repeat;
+            background-size: 100%;
+            width: 95%;
+            height: 0;
+            padding-bottom: 26%;
+            margin: auto;
+            position: relative;
+        }
+
+        .coupons>div {
+            width: 100%;
+            position: absolute;
+            top: calc((100% - 66px) / 2);
+        }
+
+        .getcoupons {
+            width: 86px;
+            height: 35px;
+            background: url(http://img.fqapps.com/21c05f9e0133980aa6e6cc28b5f3dcd9) no-repeat center;
+            background-size: 100%;
+        }
+
+        .floor-four {
+            width: calc(100%)
+        }
+
+        .floor-four .left {
+            width: 40px;
+            height: 40px;
+            border-radius: 3px;
+        }
+
+        .floor-four .left>img {
+            width: 100%;
+            height: 100%;
+            background: black;
+        }
+
+        .floor-four .right {
+            width: calc(100% - 70px);
+        }
+
+        .circle {
+            width: 15px;
+            height: 15px;
+            background: #E3E3E3;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 15px;
+        }
+
+        .goto {
+            width: 8px;
+            height: 14px;
+            background: url(http://img.fqapps.com/e43bb8c4b2142f2bb50ebd6a912c40bc) no-repeat;
+            background-size: 100%;
+        }
+
+        .likes {
+            width: 12px;
+            height: 11px;
+            background: url(http://img.fqapps.com/eddf85ffec81d50ff7886ca0c9ac1420) no-repeat;
+            background-size: 100%;
+        }
+
+        /* 轮播商品 */
+        .goods-swiper {
+            width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* 浮动栏 */
+        .tui {
+            background: url(http://img.fqapps.com/8832e510f73ae217022395b6fc9f691b) no-repeat;
+        }
+
+        .photo {
+            background: url(http://img.fqapps.com/13d90e09866c0c9a4f60760f51bc16db) no-repeat;
+        }
+
+        .tab-item>i {
+            width: 23px;
+            height: 20px;
+        }
+
+        .iconfont {
+            font-size: 24px;
+        }
+
+        .buy-bottom {
+            width: 40%;
+            height: 39px;
+            font-size: 1.5rem;
+            text-align: center;
+            line-height: 39px;
+            background: #FD736D;
+            border-radius: 2rem;
+            margin-right: 1rem;
+        }
+
+        .window {
+            width: 264px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 8px;
+            margin: auto;
+            position: relative;
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        .w-title {
+            background: #FD736D;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .w-title>i {
+            position: absolute;
+            right: 12px;
+        }
+
+        .code {
+            width: 222px;
+            height: 83px;
+            background: rgba(255, 237, 234, 1);
+            border-radius: 4px;
+            position: relative;
+            margin-top: 3rem;
+        }
+
+        .code .title {
+            width: 130px;
+            height: 25px;
+            text-align: center;
+            line-height: 25px;
+            background: rgba(253, 115, 109, 1);
+            border-radius: 13px;
+            position: absolute;
+            top: -13px;
+        }
+
+        .code>span {
+            margin: auto;
+        }
+
+        .copy {
+            width: 130px;
+            height: 33px;
+            text-align: center;
+            line-height: 33px;
+            background: rgba(253, 115, 109, 1);
+            border-radius: 17px;
+            margin: 15px 0;
+        }
+
+        .hint {
+            background: rgba(240, 240, 240, 1);
+            margin-top: 1.2rem;
+            border-radius: 0 0 8px 8px;
+        }
+
+        .tbao {
+            width: 17px;
+            height: 17px;
+            background: url(http://img.fqapps.com/ff642e093f953864a9099529084afc15) no-repeat center/17px;
+        }
+
+
+        /* 分享 */
+        .share-box {
+            margin: auto;
+        }
+
+        .share {
+            background: rgba(255, 255, 255, 1);
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+
+        .good-img {
+            width: 281px;
+            height: 283px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .good-img>img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .good-info {
+            position: relative;
+        }
+
+        .good-title {
+            margin-bottom: .5rem;
+        }
+
+        .good-title .t-icon {
+            top: 1.2rem;
+            left: .5rem;
+        }
+
+        .good-title>span {
+            text-indent: 10px;
+        }
+
+        .share-box .quan {
+            margin-top: .9rem;
+            margin-bottom: 2rem;
+        }
+
+        .explain {
+            width: 150px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            background: rgba(255, 227, 227, 1);
+        }
+
+        .code-img {
+            width: 85px;
+            height: 85px;
+            border: 1px solid rgba(246, 115, 97, 1);
+            position: absolute;
+            bottom: .4rem;
+            right: .4rem;
+        }
+
+        .code-img>img {
+            width: 80px;
+            height: 80px;
+            background: black;
+            margin: auto;
+        }
+
+        .s-hint {
+            width: 280px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 1.5rem;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 15px;
+        }
+
+        .back-icon {
+            width: 28px;
+            height: 28px;
+            background: url(http://img.fqapps.com/ea8d89421493b116643b8b8ee63800fc) no-repeat;
+            background-size: 100%;
+            position: fixed;
+            top: 1.5rem;
+            left: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div class="floor-one">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img
+                            src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                            src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg">
+                    </div>
+                    <div class="swiper-slide">
+                        <img
+                            src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floor-two flex col b-ff">
+            <div class="title-line flex p-h-sm">
+                <i class="t-icon"></i>
+                <span class="fz-13 c-33 clamp2">大喜自制春装新款条纹蝙蝠</span>
+            </div>
+            <div class="price-line flex fl-align fl-jsb p-h-sm">
+                <div>
+                    <span>券后</span>
+                    <span class="fz-12 c-58">
+                        ￥<span class="fz-16">19.9</span>
+                    </span>
+                    <span class="fz-12 c-BB t-line">￥45.00</span>
+                </div>
+                <span class="fz-12 c-6D">
+                    预估赚
+                    <span class="fz-11 c-58">
+                        ￥<span class="fz-16">19.9</span>
+                    </span>
+                </span>
+                <span class="fz-12 c-BB">销量 22840</span>
+
+            </div>
+            <div class="coupons flex fl-align fl-jsb">
+                <div class="flex fl-align fl-jsa">
+                    <div class="flex col" style="margin-left: 1rem;">
+                        <span class="fz-27 c-ff" style="font-weight: bold;">￥20元优惠券</span>
+                        <span class="fz-11 c-ff">使用期限:2019.01.01-2019.02.02</span>
+                    </div>
+                    <div class="getcoupons"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="floor-three p-sm b-ff flex col">
+            <span class="fz-13 c-41">推荐理由</span>
+            <span class="fz-11 c-66">【苹果，小米，vivo，oppo，华为，荣耀等，100多个热门型号咱都有】每款图案都超级卡哇伊！卡通设计，全方位保护，真的是美爆了。</span>
+        </div>
+
+        <div class="floor-four flex fl-align b-ff">
+            <div class="left m-sm">
+                <img src="">
+            </div>
+            <div class="right flex col">
+                <span class="fz-13 c-33">港仔文艺男</span>
+                <div class="flex fl-align fl-jsb">
+                    <div class="fz-11">
+                        <span class="c-BB">宝贝描述</span>
+                        <span class="c-5E">6.0</span>
+                        <span class="d-ib circle fz-10 c-5E">高</span>
+                    </div>
+                    <div class="fz-11 ">
+                        <span class="c-BB">卖家服务</span>
+                        <span class="">6.0</span>
+                        <span class="d-ib circle fz-10 c-99">低</span>
+                    </div>
+                    <div class="fz-11">
+                        <span class="c-BB">物流服务</span>
+                        <span class="c-9F">6.0</span>
+                        <span class="d-ib circle fz-10 c-9F">平</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floor-five flex fl-align fl-jsb b-ff p-sm">
+            <span class="fz-13 c-33">
+                商品图文详情<span class="fz-11 c-FB">(点击展开)</span>
+            </span>
+            <i class="goto"></i>
+        </div>
+
+        <div class="floor-six flex col fl-align">
+            <div class="c-6D">
+                <i class="d-ib likes"></i>
+                <span class="fz-12">猜您喜欢</span>
+            </div>
+            <!-- 轮播 -->
+            <div class="goods-swiper">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="flex fl-jse">
+                                <div class="flex goods-swiper-default col fl-align">
+                                    <img
+                                        src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg" />
+                                    <div class="goods-swiper-message b-ff">
+                                        <div class="c-65 fz-14 clamp1">【抖音爆款】蕾丝美背精品文胸</div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <div class="quan">
+                                                <span class="fz-10 c-ff">￥20</span>
+                                            </div>
+                                            <span class="fz-10 c-BB" style="white-space: nowrap;">61.0万</span>
+                                        </div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <span class="fz-10 c-58">
+                                                ￥<span class="fz-14 ">19.9</span>
+                                            </span>
+                                            <span class="fz-11 c-BB t-line">￥39.9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex goods-swiper-default col fl-align">
+                                    <img
+                                        src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg" />
+                                    <div class="goods-swiper-message b-ff">
+                                        <div class="c-65 fz-14 clamp1">【抖音爆款】蕾丝美背精品文胸</div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <div class="quan">
+                                                <span class="fz-10 c-ff">￥20</span>
+                                            </div>
+                                            <span class="fz-10 c-BB" style="white-space: nowrap;">61.0万</span>
+                                        </div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <span class="fz-10 c-58">
+                                                ￥<span class="fz-14 ">19.9</span>
+                                            </span>
+                                            <span class="fz-11 c-BB t-line">￥39.9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex goods-swiper-default col fl-align">
+                                    <img
+                                        src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg" />
+                                    <div class="goods-swiper-message b-ff">
+                                        <div class="c-65 fz-14 clamp1">【抖音爆款】蕾丝美背精品文胸</div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <div class="quan">
+                                                <span class="fz-10 c-ff">￥20</span>
+                                            </div>
+                                            <span class="fz-10 c-BB" style="white-space: nowrap;">61.0万</span>
+                                        </div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <span class="fz-10 c-58">
+                                                ￥<span class="fz-14 ">19.9</span>
+                                            </span>
+                                            <span class="fz-11 c-BB t-line">￥39.9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="flex fl-jse">
+                                <div class="flex goods-swiper-default col fl-align">
+                                    <img
+                                        src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg" />
+                                    <div class="goods-swiper-message b-ff">
+                                        <div class="c-65 fz-14 clamp1">【抖音爆款】蕾丝美背精品文胸</div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <div class="quan">
+                                                <span class="fz-10 c-ff">￥20</span>
+                                            </div>
+                                            <span class="fz-10 c-BB" style="white-space: nowrap;">61.0万</span>
+                                        </div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <span class="fz-10 c-58">
+                                                ￥<span class="fz-14 ">19.9</span>
+                                            </span>
+                                            <span class="fz-11 c-BB t-line">￥39.9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex goods-swiper-default col fl-align">
+                                    <img
+                                        src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg" />
+                                    <div class="goods-swiper-message b-ff">
+                                        <div class="c-65 fz-14 clamp1">【抖音爆款】蕾丝美背精品文胸</div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <div class="quan">
+                                                <span class="fz-10 c-ff">￥20</span>
+                                            </div>
+                                            <span class="fz-10 c-BB" style="white-space: nowrap;">61.0万</span>
+                                        </div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <span class="fz-10 c-58">
+                                                ￥<span class="fz-14 ">19.9</span>
+                                            </span>
+                                            <span class="fz-11 c-BB t-line">￥39.9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex goods-swiper-default col fl-align">
+                                    <img
+                                        src="http://img.alicdn.com/imgextra/i1/471641921/TB2Uikkpb9YBuNjy0FgXXcxcXXa_!!471641921.jpg_310x310.jpg" />
+                                    <div class="goods-swiper-message b-ff">
+                                        <div class="c-65 fz-14 clamp1">【抖音爆款】蕾丝美背精品文胸</div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <div class="quan">
+                                                <span class="fz-10 c-ff">￥20</span>
+                                            </div>
+                                            <span class="fz-10 c-BB" style="white-space: nowrap;">61.0万</span>
+                                        </div>
+                                        <div class="flex fl-align fl-jsb m-xs">
+                                            <span class="fz-10 c-58">
+                                                ￥<span class="fz-14 ">19.9</span>
+                                            </span>
+                                            <span class="fz-11 c-BB t-line">￥39.9</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating flex col fl-align">
+            <i class="tui"></i>
+            <i class="photo"></i>
+        </div>
+
+        <div class="Tab-line b-ff flex fl-align fl-jsb">
+            <div class="tab-item flex col fl-align">
+                <i class="iconfont iconicon_shouye"></i>
+                <span>首页</span>
+            </div>
+            <div class="tab-item flex col fl-align">
+                <i class="iconfont iconkefu1"></i>
+                <span>客服</span>
+            </div>
+            <div class="tab-item flex col fl-align">
+                <i class="iconfont iconicon_xingxing1"></i>
+                <span>收藏</span>
+            </div>
+            <div class="buy-bottom c-ff">口令购买</div>
+        </div>
+
+        <div class="cover flex col fl-align hides">
+            <div class="back-icon"></div>
+            <div class="window ">
+                <div class="w-title flex col fl-align c-ff p-sm">
+                    <span class="fz-18">口令购买</span>
+                    <i class="iconfont iconguanbi"></i>
+                </div>
+                <div class="content flex col fl-align">
+                    <div class="code flex col fl-align">
+                        <span class="title c-ff">长按框内>复制</span>
+                        <span class="fz-12 c-33">￥yRjvY58CV3j￥</span>
+                    </div>
+                    <div class="copy c-ff fz-14">一键复制</div>
+                    <span class="fz-12" style="color: #FFB034;">注：若复制失败，请手动复制</span>
+                    <div class="hint p-sm">
+                        <span class="">使用说明：复制淘口令后手机打开<i class="d-ib tbao"></i>即可领取优惠券购买！</span>
+                    </div>
+                </div>
+            </div>
+            <!-- 分享 -->
+            <div class="share-box flex col hides">
+                <div class="share flex col fl-align">
+                    <div class="good-img">
+                        <img src="">
+                    </div>
+                    <div class="good-info flex col p-sm">
+                        <div class="good-title">
+                            <i class="t-icon"></i>
+                            <span class="d-ib clamp2 fz-13 c-66">大喜自制春装新款条纹连身连衣裙小清新款</span>
+                        </div>
+                        <div class="">
+                            <span class="fz-12 t-active">券后
+                                <span class="fz-11 c-58">￥</span>
+                                <span class="fz-16">25.00</span>
+                            </span>
+                            <span class="fz-12 c-BB t-line">￥45.00</span>
+                        </div>
+                        <div class="quan">
+                            <span class="fz-11 c-ff">￥20</span>
+                        </div>
+                        <div class="explain fz-12 t-active">长按识别二维码领券购买</div>
+                        <div class="code-img flex col fl-align">
+                            <img src="">
+                        </div>
+                    </div>
+                </div>
+                <span class="s-hint b-ff c-58 ">长按上方图片即可发送图片或保存图片</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    var swiper = new Swiper('.floor-one .swiper-container');
+    var swiper = new Swiper('.goods-swiper .swiper-container');
+</script>
+
+<script>
+    $(function () {
+        $('.tui').click(function () {
+            $('.cover').removeClass('hides');
+        })
+
+        $('.iconguanbi,.back-icon').click(function () {
+            $('.cover').addClass('hides');
+        })
+
+        $('.photo').click(function () {
+            $('.window').addClass('hides');
+            $('.cover,.share-box').removeClass('hides');
+        })
+
+        $('.getcoupons').click(function () {
+            console.log(1111)
+        })
+    })
+</script>
+<script>
+
+</script>
+
+</html>
